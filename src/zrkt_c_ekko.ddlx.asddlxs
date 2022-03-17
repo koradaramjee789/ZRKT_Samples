@@ -1,0 +1,148 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Purchase Contract',
+    typeNamePlural: 'Purchase Contracts',
+    description: {
+    type: #STANDARD,
+    value: 'Description'
+        },
+        title: {
+//    type: #STANDARD,
+    value: 'ObjectId'
+        }
+
+    }
+}
+@Search.searchable: true
+annotate view ZRKT_C_EKKO with
+{
+ 
+  @UI.facet: [ {
+          id: 'Header',
+          type: #HEADERINFO_REFERENCE,
+          label: 'Header',
+          purpose: #HEADER,
+          position: 10,
+          targetQualifier: 'Header'
+  },
+  {     id: 'General',
+        type: #IDENTIFICATION_REFERENCE,
+        purpose: #STANDARD,
+        label: 'General',
+        position: 20 ,
+        targetQualifier: 'General'},
+
+  {     id: 'Validities',
+        type: #IDENTIFICATION_REFERENCE,
+        label: 'Validities',
+        position: 30 ,
+        targetQualifier: 'Validities'}
+
+
+   ]
+
+  @UI.hidden: true
+  @UI.lineItem: [{
+      position: 10 ,
+      type: #FOR_ACTION,
+      label: 'Forward',
+      dataAction: 'Forward'
+  }]
+  @UI.identification: [{
+    position: 10 ,
+    type: #FOR_ACTION,
+    label: 'Forward',
+    dataAction: 'Forward'
+  }]
+  TempGuid;
+
+  @UI:{ lineItem: [{ position: 10 }] 
+  , identification: [{ hidden: true }]  //position: 10 , qualifier: 'Header'}]
+  }
+  @UI.selectionField: [{ position: 10 }]
+  @Search.defaultSearchElement: true
+  objectid;
+
+  @UI.selectionField: [{ position: 20 }]
+  @UI:{ lineItem: [{ position: 20 }] , identification: [{ position: 10 , qualifier: 'Header'}]}
+  @Search.defaultSearchElement: true
+  description;
+
+  @UI.selectionField: [{ position: 40 }]
+  @UI:{ lineItem: [{ position: 30 }] , identification: [{ position: 20 , qualifier: 'General'}]}
+  @Consumption.valueHelpDefinition: [{
+      entity: {
+          name: 'ZRK_I_BUYER',
+          element: 'BuyerId'
+      }
+   }]
+ @Search.defaultSearchElement: true
+  buyer;
+
+  @UI.selectionField: [{ position: 30 }]
+  @UI:{ lineItem: [{ position: 40 }] , identification: [{ position: 40 ,qualifier: 'General'}]}
+  @Consumption.valueHelpDefinition: [{ entity: {
+      name: 'ZRK_I_SUPPLIER',
+      element: 'SupNo'
+  } ,
+        useForValidation: true
+  }]
+  supplier;
+
+  @UI:{ lineItem: [{ position: 50 }] , identification: [{ position: 50 ,qualifier: 'General'}]}
+  @Consumption.valueHelpDefinition: [{ entity: {
+      name: 'ZRK_I_SUP_CON',
+      element: 'SupConId'
+  } ,
+  additionalBinding: [{
+      localElement: 'Supplier',
+      localConstant: '',
+      element: 'SupNo',
+      usage: #FILTER_AND_RESULT
+  }] ,
+        useForValidation: true
+  }]
+  supconid;
+
+  @UI.selectionField: [{ position: 50 }]
+  @UI:{ lineItem: [{ position: 50 }] , identification: [{ position: 55 ,qualifier: 'General'}]}
+  @Consumption.valueHelpDefinition: [{ entity: {
+      name: 'ZRK_I_COMP_CODE',
+      element: 'CompCode'
+  } ,
+        useForValidation: true
+  }]
+  compcode;
+
+  @UI:{ lineItem: [{ position: 60 }] , identification: [{ position: 60 ,qualifier: 'Header'}]}
+  statcode;
+
+  @UI:{ lineItem: [{ position: 70 }] , identification: [{ position: 70 , qualifier: 'Validities' }]}
+  validfrom;
+
+  @UI:{ lineItem: [{ position: 80 }] , identification: [{ position: 80 , qualifier: 'Validities' }]}
+  validto;
+
+  @UI:{ lineItem: [{ position: 80 }] , identification: [{ position: 90 , qualifier: 'Validities' }]}
+  @Consumption.valueHelpDefinition: [{
+      entity: {
+          name: 'ZRK_I_FISCAL_YEAR',
+          element: 'fiscal_year'
+      }
+   }]
+  fisclyear;
+
+  @UI:{ lineItem: [{ position: 90 }] , identification: [{ position: 100, qualifier: 'General' , label: 'Created By' }]}
+  createdby;
+
+  @UI.hidden: true
+  createdat;
+  @UI.hidden: true
+  lastchangedby;
+  @UI.hidden: true
+  lastchangedat;
+  @UI.hidden: true
+  locllastchangedat;
+
+}

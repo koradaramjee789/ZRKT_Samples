@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service definition forZRKT_C_PROC_DOC'
+define service ZRKT_UI_PROC_DOC {
+  expose ZRKT_C_PROC_DOC as ProcDoc;
+}

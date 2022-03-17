@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service definition forZRKT_C_EKKO'
+define service ZRKT_UI_EKKO {
+  expose ZRKT_C_EKKO as Ekko;
+}

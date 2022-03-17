@@ -1,0 +1,125 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'ProcDoc', 
+    typeNamePlural: 'ProcDocs',
+    description: {
+    type: #STANDARD,
+    value: 'ObjectId'
+        },
+        title: {
+//    type: #STANDARD,
+    value: 'Description'
+        }
+  }
+}
+annotate view ZRKT_C_PROC_DOC with
+{
+  @UI.facet: [ {
+    id: 'idIdentification', 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'ProcDoc', 
+    position: 10 
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    importance: #MEDIUM
+  } ]
+  @UI.identification: [ {
+    position: 10 
+  } ]
+  objectid;
+  
+  @UI.lineItem: [ {
+    position: 20 , 
+    importance: #MEDIUM
+  } ]
+  @UI.identification: [ {
+    position: 20 
+  } ]
+  description;
+  
+  @UI.lineItem: [ {
+    position: 30 , 
+    importance: #MEDIUM
+  } ]
+  @UI.identification: [ {
+    position: 30 
+  } ]
+  buyer;
+  
+  @UI.lineItem: [ {
+    position: 40 , 
+    importance: #MEDIUM
+  } ]
+  @UI.identification: [ {
+    position: 40 
+  } ]
+  supplier;
+  
+  @UI.lineItem: [ {
+    position: 50 , 
+    importance: #MEDIUM
+  } ]
+  @UI.identification: [ {
+    position: 50 
+  } ]
+  supconid;
+  
+  @UI.lineItem: [ {
+    position: 60 , 
+    importance: #MEDIUM
+  } ]
+  @UI.identification: [ {
+    position: 60 
+  } ]
+  sendvia;
+  
+  @UI.lineItem: [ {
+    position: 70 , 
+    importance: #MEDIUM
+  } ]
+  @UI.identification: [ {
+    position: 70 
+  } ]
+  compcode;
+  
+  @UI.lineItem: [ {
+    position: 80 , 
+    importance: #MEDIUM
+  } ]
+  @UI.identification: [ {
+    position: 80 
+  } ]
+  statcode;
+  
+  @UI.lineItem: [ {
+    position: 90 , 
+    importance: #MEDIUM
+  } ]
+  @UI.identification: [ {
+    position: 90 
+  } ]
+  fisclyear;
+  
+  @UI.lineItem: [ {
+    position: 100 , 
+    importance: #MEDIUM
+  } ]
+  @UI.identification: [ {
+    position: 100 
+  } ]
+  validfrom;
+  
+  @UI.lineItem: [ {
+    position: 110 , 
+    importance: #MEDIUM
+  } ]
+  @UI.identification: [ {
+    position: 110 
+  } ]
+  validto;
+  
+  @UI.hidden: true
+  locllastchangedat;
+}

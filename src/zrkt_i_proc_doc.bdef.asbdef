@@ -1,0 +1,55 @@
+unmanaged implementation in class ZRKT_BP_PROC_DOC unique;
+strict;
+with draft;
+
+define behavior for ZRKT_I_PROC_DOC alias ProcDoc
+//persistent table zrkt_proc_doc
+draft table ZRKT_DT_PROC_DOC
+etag master LoclLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+
+{
+  field ( readonly )
+   CreatedAt,
+   CreatedBy,
+   LastChangedAt,
+   LoclLastChangedAt,
+   LastChangedBy;
+
+   field( numbering : managed , readonly) TempGuid;
+
+
+  create;
+  update;
+  delete;
+
+//  determination set_pc_num on save  { create; }
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZRKT_PROC_DOC
+  {
+
+    ObjectID = OBJECT_ID;
+    Description = DESCRIPTION;
+    Buyer = BUYER;
+    Supplier = SUPPLIER;
+    SupConID = SUP_CON_ID;
+    SendVia = SEND_VIA;
+    CompCode = COMP_CODE;
+    StatCode = STAT_CODE;
+    FisclYear = FISCL_YEAR;
+    ValidFrom = VALID_FROM;
+    ValidTo = VALID_TO;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LastChangedBy = LAST_CHANGED_BY;
+    LastChangedAt = LAST_CHANGED_AT;
+    LoclLastChangedAt = LOCL_LAST_CHANGED_AT;
+  }
+}
